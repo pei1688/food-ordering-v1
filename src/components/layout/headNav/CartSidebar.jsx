@@ -1,3 +1,4 @@
+import Counter from "@/components/Counter";
 import { Button } from "@/components/ui/button";
 import { Minus, Plus, X } from "lucide-react";
 import Image from "next/image";
@@ -11,7 +12,6 @@ function CartSidebar({
   totalCartPrice,
   updateCartProduct,
 }) {
-
   return (
     <section
       className={`fixed flex top-0 right-0 w-full h-full bg-zinc-800 bg-opacity-40 text-brown-50 z-50 transform transition-transform duration-300 ease-in-out ${
@@ -53,41 +53,22 @@ function CartSidebar({
                     <p>
                       {product.name}x{product.quantity}
                     </p>
-                    <p className="bg-zinc-700">大小:{product.selectedSize.sizeName}</p>
+                    <p className="bg-zinc-700">
+                      大小:{product.selectedSize.sizeName}
+                    </p>
                     {product.selectedExtra.length > 0 &&
                       product.selectedExtra.map((extra) => (
-                        <p >加料:{extra.extraName}</p>
+                        <p>加料:{extra.extraName}</p>
                       ))}
                     <p className="bg-zinc-700">NT${product.totalPrice}元</p>
                     <div className="flex items-center gap-4">
-                      {/* 減少數量 */}
-                      <Button
-                        onClick={() => {
-                          if (product.quantity > 1)
-                            updateCartProduct(index, product.quantity - 1);
-                        }}
-                        className={`${
-                          product.quantity <= 1
-                            ? "cursor-not-allowed opacity-50"
-                            : ""
-                        }`}
-                        variant="quantity"
-                        size="none"
-                        disabled={product.quantity <= 1}
-                      >
-                        <Minus size={15} />
-                      </Button>
-                      {product.quantity}
-                      {/* 增加數量 */}
-                      <Button
-                        onClick={() =>
-                          updateCartProduct(index, product.quantity + 1)
+                      {/* 數量調整 */}
+                      <Counter
+                        quantity={product.quantity}
+                        setQuantity={(quantity) =>
+                          updateCartProduct(index, quantity)
                         }
-                        variant="quantity"
-                        size="none"
-                      >
-                        <Plus size={15} />
-                      </Button>
+                      />
                     </div>
                   </div>
                 </div>

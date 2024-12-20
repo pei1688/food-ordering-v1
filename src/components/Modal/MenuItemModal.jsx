@@ -2,12 +2,12 @@
 import Image from "next/image";
 import Modal from "./Modal";
 import { Button } from "../ui/button";
-import { Flower, Minus, Plus } from "lucide-react";
+import { Flower } from "lucide-react";
 import { Label } from "../ui/label";
 import { Input } from "../ui/input";
 import { Checkbox } from "../ui/checkbox";
-import { useState } from "react";
-
+import { useState, useMemo } from "react";
+import Counter from "../Counter";
 
 function MenuItemModal({ item, open, setOpen, addToCart }) {
   const [selectedSize, setSelectedSize] = useState(null);
@@ -48,13 +48,14 @@ function MenuItemModal({ item, open, setOpen, addToCart }) {
     }
   }
   // 總價格
-  let selectedPrice = item.basePrice;
-  if (selectedSize) {
-    selectedPrice += selectedSize.price;
-  }
-  if (selectedExtra?.length > 0) {
-    selectedPrice += selectedExtra.reduce((sum, extra) => sum + extra.price, 0);
-  }
+  const selectedPrice = useMemo(() => {
+    let price = item.basePrice;
+    if (selectedSize) price += selectedSize.price;
+    if (selectedExtra.length > 0) {
+      price += selectedExtra.reduce((sum, extra) => sum + extra.price, 0);
+    }
+    return price;
+  }, [item.basePrice, selectedExtra, selectedSize]);
 
   // 重置
   function resetSelections() {
@@ -63,13 +64,16 @@ function MenuItemModal({ item, open, setOpen, addToCart }) {
     setQuantity(1);
   }
 
-  const product = {
-    ...item,
-    selectedSize,
-    selectedExtra,
-    quantity,
-    totalPrice: selectedPrice * quantity,
-  };
+  const product = useMemo(
+    () => ({
+      ...item,
+      selectedSize,
+      selectedExtra,
+      quantity,
+      totalPrice: selectedPrice * quantity,
+    }),
+    [item, selectedSize, selectedExtra, quantity, selectedPrice]
+  );
 
   return (
     <Modal
@@ -99,9 +103,7 @@ function MenuItemModal({ item, open, setOpen, addToCart }) {
             <Flower size={30} />
             {item.name} <Flower size={30} />
           </div>
-          <div className="text-sm my-4  text-center">
-            {item.description}
-          </div>
+          <div className="text-sm my-4  text-center">{item.description}</div>
           {transformedSizes.length > 0 && (
             <>
               <div className="mt-6 flex w-full font-semibold mb-2">
@@ -161,26 +163,9 @@ function MenuItemModal({ item, open, setOpen, addToCart }) {
             </>
           )}
           <div className="flex items-center justify-between  mt-4 w-full flex-col sm:flex-row gap-4">
+            {/* 數量調整 */}
             <div className="flex items-center  gap-4">
-              <Button
-                onClick={() => {
-                  if (quantity > 1) setQuantity(quantity - 1);
-                }}
-                className={`${
-                  quantity <= 1 ? "cursor-not-allowed opacity-50" : ""
-                }`}
-                variant="create"
-                disabled={quantity <= 1}
-              >
-                <Minus size={20} />
-              </Button>
-              {quantity}
-              <Button
-                onClick={() => setQuantity(quantity + 1)}
-                variant="create"
-              >
-                <Plus size={20} />
-              </Button>
+              <Counter quantity={quantity} setQuantity={setQuantity} />
             </div>
 
             <div className="flex items-center gap-3">

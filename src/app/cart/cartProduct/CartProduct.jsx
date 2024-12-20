@@ -1,4 +1,5 @@
 "use client";
+import Counter from "@/components/Counter";
 import { Button } from "@/components/ui/button";
 import { Minus, Plus } from "lucide-react";
 import Image from "next/image";
@@ -56,7 +57,11 @@ function CartProduct({
 
             {/* 選擇數量 */}
             <div className="flex flex-1  items-center gap-4 justify-center  ">
-              <Button
+              <Counter
+                quantity={product.quantity}
+                setQuantity={(quantity) => updateCartProduct(index, quantity)}
+              />
+              {/* <Button
                 onClick={() => {
                   if (product.quantity > 1)
                     updateCartProduct(index, product.quantity - 1);
@@ -68,7 +73,7 @@ function CartProduct({
                   product.quantity <= 1 ? "cursor-not-allowed opacity-50" : ""
                 }`}
               >
-                <Minus size={15} />
+                <Minus size={20} />
               </Button>
               <div className="text-center w-8">{product.quantity}</div>
               <Button
@@ -76,8 +81,8 @@ function CartProduct({
                 size="none"
                 variant="quantity"
               >
-                <Plus size={15} />
-              </Button>
+                <Plus size={20} />
+              </Button> */}
             </div>
 
             {/* 價格與刪除 */}

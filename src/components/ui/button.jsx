@@ -29,7 +29,7 @@ const buttonVariants = cva(
         modal: " hover:underline text-sm ",
         banner: " px-4 text-md text-brown-400 hover:shadow-lg hover:bg-brown-100 bg-brown-100 ",
         cart: "bg-zinc-200 hover:bg-zinc-300 shadow-md",
-        quantity: "bg-zinc-800 hover:bg-zinc-900 px-2 py-1",
+        quantity: "bg-zinc-700 hover:bg-zinc-600 px-2 py-1",
         none: "",
       },
       size: {
