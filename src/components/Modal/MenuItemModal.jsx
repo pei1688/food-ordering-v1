@@ -2,7 +2,7 @@
 import Image from "next/image";
 import Modal from "./Modal";
 import { Button } from "../ui/button";
-import { Flower } from "lucide-react";
+import { Flower, X } from "lucide-react";
 import { Label } from "../ui/label";
 import { Input } from "../ui/input";
 import { Checkbox } from "../ui/checkbox";
@@ -85,17 +85,20 @@ function MenuItemModal({ item, open, setOpen, addToCart }) {
       className=""
     >
       <>
-        <div className="relative w-full h-[300px] lg:h-[400px] ">
+        <div className="relative w-full h-[300px] lg:h-[400px] p-4">
+          
           <Image
             src={item.image}
             alt="name"
             fill
-            className="object-cover rounded-xl"
+            className="object-cover rounded-xl "
           />
           <div className="absolute top-0 right-0">
-            <Button variant="modal" onClick={() => setOpen(false)}>
-              X
-            </Button>
+            <X
+              className="text-white m-4 hover:text-zinc-600  "
+              onClick={() => setOpen(false)}
+              size={30}
+            />
           </div>
         </div>
         <div className="flex items-center justify-center flex-col text-zinc-100 p-4">

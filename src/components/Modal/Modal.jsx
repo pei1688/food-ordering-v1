@@ -8,7 +8,7 @@ function Modal({ open, onClose, children }) {
     >
        <div
     onClick={(e) => e.stopPropagation()}
-    className={`rounded-xl shadow w-[95%] sm:w-[500px] border border-brown-100 bg-food-300 overflow-y-auto transition-all relative ${
+    className={`rounded-xl shadow w-[95%] sm:w-[500px] border border-brown-100 bg-food-300  overflow-y-auto transition-all relative ${
       open ? "opacity-100" : "opacity-0"
     } max-h-screen`}
   >

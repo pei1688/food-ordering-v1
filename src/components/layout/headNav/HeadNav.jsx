@@ -1,7 +1,7 @@
 "use client";
 import { useContext, useState } from "react";
 import { CartContext } from "@/context/AppContext";
-import { EggFried, Logs, ShoppingCart, X } from "lucide-react";
+import { EggFried, Logs, ShoppingCart } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import DesktopMenu from "./DesktopMenu";
