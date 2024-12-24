@@ -61,28 +61,6 @@ function CartProduct({
                 quantity={product.quantity}
                 setQuantity={(quantity) => updateCartProduct(index, quantity)}
               />
-              {/* <Button
-                onClick={() => {
-                  if (product.quantity > 1)
-                    updateCartProduct(index, product.quantity - 1);
-                }}
-                size="none"
-                variant="quantity"
-                disabled={product.quantity <= 1}
-                className={`${
-                  product.quantity <= 1 ? "cursor-not-allowed opacity-50" : ""
-                }`}
-              >
-                <Minus size={20} />
-              </Button>
-              <div className="text-center w-8">{product.quantity}</div>
-              <Button
-                onClick={() => updateCartProduct(index, product.quantity + 1)}
-                size="none"
-                variant="quantity"
-              >
-                <Plus size={20} />
-              </Button> */}
             </div>
 
             {/* 價格與刪除 */}

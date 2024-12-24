@@ -1,7 +1,7 @@
 "use client";
-import CartProduct from "@/app/cart/cartProduct/CartProduct";
+import CartProduct from "@/components/checkout/CartProduct";
 import AdressInfo from "./AdressInfo";
-import { useContext, useState } from "react";
+import { useContext, useState, useTransition } from "react";
 import { CartContext } from "@/context/AppContext";
 import { ArrowRight } from "lucide-react";
 import { Button } from "../ui/button";
@@ -10,6 +10,7 @@ import Link from "next/link";
 
 function CheckoutForm({ initialAddressInfo, user }) {
   const [addressInfo, setAddressInfo] = useState(initialAddressInfo);
+  const [isPending, startTransition] = useTransition();
   const { cartProducts, removeCartProduct, updateCartProduct } =
     useContext(CartContext);
   const totalCartPrice = cartProducts.reduce(
@@ -18,29 +19,30 @@ function CheckoutForm({ initialAddressInfo, user }) {
   );
 
   async function handleCheckout() {
-    const promise = new Promise((resolve, reject) => {
-      fetch("/api/checkout", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          addressInfo,
-          cartProducts,
-          totalPrice: totalCartPrice,
-        }),
-      }).then(async (response) => {
-        if (response.ok) {
-          resolve();
-          window.location = await response.json();
-        } else {
-          reject();
-        }
+    startTransition(async () => {
+      const promise = new Promise((resolve, reject) => {
+        fetch("/api/checkout", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            addressInfo,
+            cartProducts,
+            totalPrice: totalCartPrice,
+          }),
+        }).then(async (response) => {
+          if (response.ok) {
+            resolve();
+            window.location = await response.json();
+          } else {
+            reject();
+          }
+        });
       });
-    });
-
-    await toast.promise(promise, {
-      loading: "準備您的訂單...",
-      success: "前往付款...",
-      error: "錯誤...請稍後再嘗試一遍",
+      await toast.promise(promise, {
+        loading: "準備您的訂單...",
+        success: "前往付款...",
+        error: "錯誤...請稍後再嘗試一遍",
+      });
     });
   }
 
@@ -94,14 +96,15 @@ function CheckoutForm({ initialAddressInfo, user }) {
               addressInfo={addressInfo}
               onAddressChange={setAddressInfo}
             />
-            <Button
+            <button
               type="button"
               variant="login"
-              className="justify-center lg:flex hidden"
+              className="justify-center lg:flex hidden border p-2 rounded-md cursor-not-allowed bg-zinc-800 bg-opacity-30"
               onClick={handleCheckout}
+              disabled
             >
               前往付款
-            </Button>
+            </button>
           </div>
         </form>
       ) : (
@@ -122,14 +125,14 @@ function CheckoutForm({ initialAddressInfo, user }) {
               ${totalCartPrice}
             </span>
           </h2>
-          <Button
-            type="button"
+          <button
             variant="login"
-            className="justify-center"
+            className="justify-center cursor-not-allowed"
             onClick={handleCheckout}
+            disabled
           >
             前往付款
-          </Button>
+          </button>
         </div>
       </div>
     </section>
