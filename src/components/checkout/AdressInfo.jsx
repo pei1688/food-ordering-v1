@@ -1,15 +1,11 @@
-"use client"
 import { Label } from "../ui/label";
 import { Input } from "../ui/input";
-
 function AdressInfo({ addressInfo, onAddressChange }) {
   function handleChange(e) {
     const { name, value } = e.target;
     const updateInfo = { ...addressInfo, [name]: value };
-    
     onAddressChange(updateInfo);
   }
-
   return (
     <div className=" space-y-4">
       <div className="space-y-4">

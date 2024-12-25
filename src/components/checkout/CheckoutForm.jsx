@@ -102,6 +102,7 @@ function CheckoutForm({ initialAddressInfo, user }) {
               className="justify-center lg:flex hidden border p-2 rounded-md cursor-not-allowed bg-zinc-800 bg-opacity-30"
               onClick={handleCheckout}
               disabled
+              // disabled={isPending}
             >
               前往付款
             </button>
@@ -130,6 +131,7 @@ function CheckoutForm({ initialAddressInfo, user }) {
             className="justify-center cursor-not-allowed"
             onClick={handleCheckout}
             disabled
+            // disabled={isPending}
           >
             前往付款
           </button>
