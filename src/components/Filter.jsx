@@ -40,22 +40,18 @@ function Filter({ categories, currentFilter, currentSort }) {
   return (
     <div className="flex flex-col sm:flex-row items-center justify-between text-brown-50 space-y-4 sm:space-y-0 ">
       {/* 分類按鈕 */}
-      <div className="flex gap-4 overflow-x-auto whitespace-nowrap max-w-[450px] scrollbar-hide">
-        <ScrollArea className="h-full w-[200px] lg:w-[350px] pb-4">
+      <div className="max-w-[450px]">
+        <select
+          className="p-2 rounded-md shadow-sm bg-transparent focus:outline-none cursor-pointer accent-auto w-full"
+          value={currentFilter}
+          onChange={(e) => handleFilter(e.target.value)}
+        >
           {categories.map((category) => (
-            <Button
-              key={category}
-              className={`px-2 text-md ${
-                currentFilter === category ? "text-brown-100" : ""
-              }`}
-              size="none"
-              onClick={() => handleFilter(category)}
-            >
+            <option key={category} value={category} className="text-zinc-800">
               {category}
-            </Button>
+            </option>
           ))}
-          <ScrollBar orientation="horizontal" />
-        </ScrollArea>
+        </select>
       </div>
 
       {/* 搜索欄和排序 */}

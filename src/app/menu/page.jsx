@@ -5,7 +5,14 @@ import Slider from "@/components/Slider";
 import { Suspense } from "react";
 
 export const metadata = {
-  title:"商品一覽"
+  title: "商品一覽",
+};
+
+export async function generateStaticParams() {
+  const { category } = await getFood();
+  return category.map((cat) => ({
+    category: cat.name,
+  }));
 }
 
 async function page({ searchParams }) {
@@ -66,8 +73,6 @@ async function page({ searchParams }) {
             ))
           )}
         </div>
-
-      
       </div>
     </section>
   );
