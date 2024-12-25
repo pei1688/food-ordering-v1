@@ -76,6 +76,8 @@ function Slider() {
               alt={`Slide ${index + 1}`}
               fill
               className="object-cover"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              priority
             />
             {/* 文字內容 */}
             <div className="absolute top-[80px] right-[100px] text-brown-50 flex flex-col gap-3 text-end  w-[300px]">

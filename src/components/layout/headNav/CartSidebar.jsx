@@ -35,7 +35,7 @@ function CartSidebar({
           <ul>
             {cartProducts.map((product, index) => (
               <li
-                key={index}
+                key={product._id}
                 className="py-4 flex items-center border-y border-brown-100 border-opacity-10 justify-between"
               >
                 <div className="flex gap-4 text-center">
@@ -45,7 +45,8 @@ function CartSidebar({
                       src={product.image}
                       className="object-cover"
                       fill
-                      alt={product.name}
+                      alt="Food Item"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
                   </div>
                   {/* 商品資訊 */}
@@ -58,7 +59,7 @@ function CartSidebar({
                     </p>
                     {product.selectedExtra.length > 0 &&
                       product.selectedExtra.map((extra) => (
-                        <p>加料:{extra.extraName}</p>
+                        <p key={extra._id}>加料:{extra.extraName}</p>
                       ))}
                     <p className="bg-zinc-700">NT${product.totalPrice}元</p>
                     <div className="flex items-center gap-4">

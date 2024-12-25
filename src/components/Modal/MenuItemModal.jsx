@@ -86,12 +86,12 @@ function MenuItemModal({ item, open, setOpen, addToCart }) {
     >
       <>
         <div className="relative w-full h-[300px] lg:h-[400px] p-4">
-          
           <Image
             src={item.image}
-            alt="name"
+            alt="Food Item"
             fill
             className="object-cover rounded-xl "
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
           <div className="absolute top-0 right-0">
             <X

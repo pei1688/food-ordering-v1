@@ -19,9 +19,10 @@ function MenuList({ item }) {
       <div className="relative h-[300px]">
         <Image
           src={item.image}
-          alt="food"
+          alt="Food Item"
           fill
           className="object-cover rounded-md"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
       </div>
       <div className="p-4 ">

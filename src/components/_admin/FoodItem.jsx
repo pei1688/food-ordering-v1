@@ -23,7 +23,8 @@ async function FoodItem({ searchedFood, totalCount, perPage, currentPage }) {
                   className="object-cover rounded-md"
                   fill
                   src={item.image}
-                  alt=""
+                  alt="Food Item"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
               </div>
               <div className="flex items-center justify-between my-2 px-3">

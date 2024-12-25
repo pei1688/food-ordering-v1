@@ -22,7 +22,7 @@ function CartProduct({
             <div className="flex items-center gap-4  min-w-[200px]">
               <div className="relative w-[80px] h-[80px] md:w-[100px] md:h-[100px] flex-shrink-0 border rounded-lg border-brown-400">
                 <Image
-                  alt={product.name}
+                  alt="Food Item"
                   src={product.image}
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"

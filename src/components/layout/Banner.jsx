@@ -10,7 +10,8 @@ function Banner() {
         <Image
           src={"/foodbanner.jpg"}
           fill
-          alt="food"
+          alt="Food Banner"
+          priority //seo優化 ，僅為頁面首屏的主要圖片設置
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           className="object-cover opacity-80 rounded-md"
         />
