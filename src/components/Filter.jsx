@@ -1,10 +1,8 @@
 "use client";
 
 import { useSearchParams, useRouter, usePathname } from "next/navigation";
-import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Search } from "lucide-react";
-import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 
 function Filter({ categories, currentFilter, currentSort }) {
   const router = useRouter();
