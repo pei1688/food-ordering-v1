@@ -1,5 +1,6 @@
 import { getUserByEmail } from "@/action/user";
 import UserForm from "@/components/layout/UserForm";
+import LoadingSpinner from "@/components/LoadingSpinner";
 
 import getSession from "@/lib/getSession";
 import { redirect } from "next/navigation";
@@ -18,7 +19,7 @@ async function page() {
         <p className="text-sm">管理你的檔案以保護你的帳戶</p>
       </div>
       <hr className="my-4 border-food-100" />
-      <Suspense fallback={"loading..."}>
+      <Suspense fallback={<LoadingSpinner />}>
         <UserForm user={userInformation} />
       </Suspense>
     </section>

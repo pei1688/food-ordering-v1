@@ -7,7 +7,7 @@ import { ArrowRight } from "lucide-react";
 import { getUserByEmail } from "@/action/user";
 import Filter from "@/components/Filter";
 import { getFoodFilter } from "@/action/menu";
-import Spinner from "@/components/Spinner";
+import LoadingSpinner from "@/components/LoadingSpinner";
 
 export const metadata = {
   title: "食物列表",
@@ -71,7 +71,7 @@ async function page({ searchParams }) {
 
       <hr className="my-4 border-food-100" />
 
-      <Suspense fallback={<Spinner />}>
+      <Suspense fallback={<LoadingSpinner />}>
         <FoodItem
           searchedFood={food}
           totalCount={totalCount}

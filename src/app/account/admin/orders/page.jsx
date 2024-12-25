@@ -4,10 +4,10 @@ import { Suspense } from "react";
 import OrderList from "@/components/_admin/OrderList";
 import { redirect } from "next/navigation";
 import PaginationComponent from "@/components/PaginationComponent";
-import Spinner from "@/components/Spinner";
+import LoadingSpinner from "@/components/LoadingSpinner";
 
 export const metadata = {
-  title: "客戶訂單"
+  title: "客戶訂單",
 };
 
 async function page({ searchParams }) {
@@ -30,7 +30,7 @@ async function page({ searchParams }) {
       </div>
       <hr className="my-4 border-food-100" />
       <div>
-        <Suspense fallback={<Spinner />}>
+        <Suspense fallback={<LoadingSpinner />}>
           <OrderList orders={orders} />
         </Suspense>
       </div>

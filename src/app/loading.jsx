@@ -1,8 +1,10 @@
+import { Spinner } from "@nextui-org/spinner";
+
 function loading() {
   return (
-    <div className="flex justify-center items-center text-zinc-100 text-2xl min-h-screen w-full">
-      載入中...
-    </div>
+    <div className="flex justify-center items-center h-screen">
+    <Spinner color="warning" label="載入中..." labelColor="warning"/>
+  </div>
   );
 }
 

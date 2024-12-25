@@ -4,11 +4,10 @@ import { Suspense } from "react";
 import getSession from "@/lib/getSession";
 import UserOrderList from "@/components/order/UserOrderList";
 import PaginationComponent from "@/components/PaginationComponent";
-import Spinner from "@/components/Spinner";
+import Spinner from "@/components/LoadingSpinner";
 
 export const metadata = {
-  title: "訂單"
-  
+  title: "訂單",
 };
 
 async function page({ searchParams }) {

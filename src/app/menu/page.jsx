@@ -2,6 +2,7 @@ import { getFood } from "@/action/menu";
 import Filter from "@/components/Filter";
 import MenuList from "@/components/menu/MenuList";
 import Slider from "@/components/Slider";
+import LoadingSpinner from "@/components/LoadingSpinner";
 import { Suspense } from "react";
 
 export const metadata = {
@@ -67,7 +68,7 @@ async function page({ searchParams }) {
             </p>
           ) : (
             searchedFood.map((item) => (
-              <Suspense fallback="載入中..." key={item._id}>
+              <Suspense fallback={<LoadingSpinner />} key={item._id}>
                 <MenuList item={item} />
               </Suspense>
             ))

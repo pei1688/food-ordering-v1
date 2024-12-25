@@ -4,15 +4,15 @@ import UsersList from "../../../../components/_admin/UserList";
 import { Suspense } from "react";
 import { getUser } from "@/action/user";
 import PaginationComponent from "@/components/PaginationComponent";
-import Spinner from "@/components/Spinner";
+import LoadingSpinner from "@/components/LoadingSpinner";
 
 export const metadata = {
-  title: "用戶列表"
+  title: "用戶列表",
 };
 
 async function page({ searchParams }) {
   const session = await getSession();
-  const role =  session?.user?.role;
+  const role = session?.user?.role;
   if (role === "user") redirect("/");
 
   let currentPage = parseInt(searchParams.page, 10);
@@ -29,7 +29,7 @@ async function page({ searchParams }) {
         <p className="text-sm">查看與管理用戶權限</p>
       </div>
       <hr className="my-4 border-food-100" />
-      <Suspense fallback={<Spinner />}>
+      <Suspense fallback={<LoadingSpinner />}>
         <UsersList allUser={allUser} />
       </Suspense>
       {/*分頁*/}
