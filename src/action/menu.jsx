@@ -42,13 +42,11 @@ export async function createFood(formData, newImage) {
 }
 
 //獲取全部菜單&
-export async function getFood(perPage, page) {
+export async function getFood() {
   try {
     // 查詢所有食物項目並使用 populate 來加載 category 資料
     const res = await MenuItem.find({})
       .populate("category")
-      .skip(perPage * (page - 1))
-      .limit(perPage);
     const food = JSON.parse(JSON.stringify(res));
     //數量
     const foodCount = await MenuItem.countDocuments({});

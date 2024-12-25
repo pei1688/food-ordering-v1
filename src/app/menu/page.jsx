@@ -4,6 +4,7 @@ import MenuList from "@/components/menu/MenuList";
 import Slider from "@/components/Slider";
 import LoadingSpinner from "@/components/LoadingSpinner";
 import { Suspense } from "react";
+import { redirect } from "next/navigation";
 
 export const metadata = {
   title: "商品一覽",
@@ -21,6 +22,11 @@ async function page({ searchParams }) {
   const filter = searchParams?.category ?? "全部";
   const sortBy = searchParams?.sort ?? "default";
   const query = searchParams?.query ?? "";
+
+   // 如果未提供查詢參數，重定向到預設網址
+   if (!searchParams?.category || !searchParams?.sort) {
+    redirect(`/menu?category=全部&sort=default`);
+  }
 
   // 過濾類別資料
   const filteredFood =

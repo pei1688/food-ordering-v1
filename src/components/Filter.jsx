@@ -13,7 +13,9 @@ function Filter({ categories, currentFilter, currentSort }) {
   function handleFilter(filter) {
     const params = new URLSearchParams(searchParams);
     params.set("category", filter);
-    params.set("page", "1");
+    if (params.has("page")) {
+      params.set("page", "1");
+    }
     router.replace(`${pathName}?${params.toString()}`, { scroll: false });
   }
 
