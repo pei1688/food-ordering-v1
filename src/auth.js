@@ -71,7 +71,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           const { email, id, name, image } = user;
           await connectDB();
           const alreadyUser = await User.findOne({ email });
-          console.log("Creating user:", { name, email, id, image });
           if (!alreadyUser) {
             await User.create({
               name,
@@ -79,18 +78,17 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
               authProviderId: id,
               image,
             });
-          } else {
-            return true;
           }
+          return true; // 確保成功時返回 true
         } catch (error) {
           console.error("Error during user creation:", error);
+          return false; // 錯誤時返回 false
         }
       }
       if (account?.provider === "credentials") {
         return true;
-      } else {
-        return false;
       }
+      return false; // 預設返回 false
     },
   },
 });

@@ -53,18 +53,18 @@ function UserMenu({ user }) {
                   管理用戶
                 </div>
               </Link>
-              <form action={logoutUser}>
-                <Button
-                  className="w-full hover:bg-zinc-200 p-4 rounded-t-md duration-200 flex items-center gap-2"
-                  size="none"
-                  variant="none"
-                >
-                  <LogOut size={18} />
-                  登出
-                </Button>
-              </form>
             </>
           )}
+          <form action={logoutUser}>
+            <Button
+              className="w-full hover:bg-zinc-200 p-4 rounded-t-md duration-200 flex items-center gap-2"
+              size="none"
+              variant="none"
+            >
+              <LogOut size={18} />
+              登出
+            </Button>
+          </form>
         </>
       ) : (
         <div>
