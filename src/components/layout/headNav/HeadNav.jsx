@@ -6,7 +6,11 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import DesktopMenu from "./DesktopMenu";
 import MobileMenu from "./MobileMenu";
-import CartSidebar from "./CartSidebar";
+import dynamic from "next/dynamic";
+
+const CartSidebar = dynamic(() => import("./CartSidebar"), {
+  ssr: false,
+});
 
 function HeadNav({ user }) {
   const { cartProducts, removeCartProduct, updateCartProduct } =

@@ -13,6 +13,7 @@ function MenuItemModal({ item, open, setOpen, addToCart }) {
   const [selectedSize, setSelectedSize] = useState(null);
   const [selectedExtra, setSelectedExtra] = useState([]);
   const [quantity, setQuantity] = useState(1);
+  
 
   const transformedSizes = item.sizes.map((size) => ({
     sizeName: size.name,

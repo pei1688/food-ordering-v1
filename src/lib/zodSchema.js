@@ -7,9 +7,6 @@ export const registerSchema = z.object({
     .string()
     .min(1, { message: "欄位不得為空" })
     .email({ message: "信箱格式錯誤" }),
-  // .refine(async (email) => await checkEmail(email), {
-  //   message: "此電子郵件已被註冊",
-  // }),
   password: z
     .string()
     .min(1, { message: "欄位不得為空" })

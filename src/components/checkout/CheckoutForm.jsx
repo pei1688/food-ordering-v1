@@ -109,9 +109,9 @@ function CheckoutForm({ initialAddressInfo, user }) {
           </div>
         </form>
       ) : (
-        <div className="bg-food-100 bg-opacity-50 w-full rounded-lg flex justify-center items-center text-2xl">
+        <div className="bg-food-100 bg-opacity-50 w-full rounded-lg flex justify-center items-center text-xl transition-all">
           請先
-          <Link href={"/login"} className="hover:text-food-600 underline ml-1">
+          <Link href={"/login"} className="hover:text-food-600 border-b-1 border-b-brown-150 ml-1 border-transparent">
             登入
           </Link>
         </div>

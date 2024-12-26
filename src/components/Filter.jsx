@@ -41,7 +41,7 @@ function Filter({ categories, currentFilter, currentSort }) {
   return (
     <div className="flex flex-col sm:flex-row items-center justify-between text-brown-50 space-y-4 sm:space-y-0 ">
       {/* 分類按鈕 */}
-      <div className=" lg:flex hidden max-w-[450px] pb-4 gap-3">
+      <div className=" flex max-w-[450px] pb-4 gap-3">
         {categories.map((category) => (
           <Button
             key={category}
@@ -59,7 +59,7 @@ function Filter({ categories, currentFilter, currentSort }) {
         ))}
       </div>
 
-      <div className=" lg:hidden flex pb-4 ">
+      {/* <div className=" lg:hidden flex pb-4 ">
         <select
           className="p-2 rounded-md shadow-sm bg-transparent focus:outline-none cursor-pointer accent-auto w-full"
           value={currentFilter}
@@ -71,9 +71,9 @@ function Filter({ categories, currentFilter, currentSort }) {
             </option>
           ))}
         </select>
-      </div>
+      </div> */}
       {/* 搜索欄和排序 */}
-      <div className="flex flex-col sm:flex-row items-center gap-8 sm:gap-4 sm:my-0 my-4 w-full sm:w-auto pb-4">
+      <div className="flex  sm:flex-row items-center gap-8 sm:gap-4 sm:my-0 my-4 w-full sm:w-auto pb-4">
         {/* 搜索欄 */}
         <div className="relative flex w-full sm:w-[300px]">
           <Input

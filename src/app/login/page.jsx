@@ -1,5 +1,5 @@
 import getSession from "@/lib/getSession";
-import LoginForm from "./loginForm/LoginForm";
+import LoginForm from "../../components/account/LoginForm";
 import { redirect } from "next/navigation";
 
 export const metadata = {

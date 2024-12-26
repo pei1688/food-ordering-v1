@@ -33,7 +33,7 @@ export function AppProvider({ children }) {
   //   });
   // }
 
-  function addToCart(product) {
+  function addToCartX(product) {
     setCartProducts((prevProducts) => {
       // 檢查是否已經有相同的產品
       const existingProductIndex = prevProducts.findIndex(
@@ -63,6 +63,49 @@ export function AppProvider({ children }) {
       return newProducts;
     });
   }
+  function addToCart(product) {
+    setCartProducts((prevProducts) => {
+      // 檢查是否已經有相同的產品
+      const existingProductIndex = prevProducts.findIndex((p) => {
+        // 檢查ID與尺寸是否相同
+        const isSameSize = p.selectedSize?.sizeName === product.selectedSize?.sizeName;
+  
+        // 檢查加料是否完全相同
+        const isSameExtras =
+          p.selectedExtra.length === product.selectedExtra.length &&
+          p.selectedExtra
+            .map((extra) => extra.extraName)
+            .sort()
+            .join(",") ===
+          product.selectedExtra
+            .map((extra) => extra.extraName)
+            .sort()
+            .join(",");
+  
+        return p._id === product._id && isSameSize && isSameExtras;
+      });
+  
+      let newProducts;
+      if (existingProductIndex !== -1) {
+        // 如果找到相同產品，更新數量
+        newProducts = prevProducts.map((p, index) =>
+          index === existingProductIndex
+            ? {
+                ...p,
+                quantity: p.quantity + product.quantity,
+                totalPrice: p.totalPrice + product.totalPrice,
+              }
+            : p
+        );
+      } else {
+        // 如果沒有找到相同產品，新增產品
+        newProducts = [...prevProducts, product];
+      }
+      saveCartToLs(newProducts);
+      return newProducts;
+    });
+  }
+  
 
   //數量增減
   function updateCartProduct(indexToUpdate, quantity) {

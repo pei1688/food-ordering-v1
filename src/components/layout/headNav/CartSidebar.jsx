@@ -12,6 +12,8 @@ function CartSidebar({
   totalCartPrice,
   updateCartProduct,
 }) {
+  
+  
   return (
     <section
       className={`fixed flex top-0 right-0 w-full h-full bg-zinc-800 bg-opacity-40 text-brown-50 z-50 transform transition-transform duration-300 ease-in-out ${
@@ -35,7 +37,7 @@ function CartSidebar({
           <ul>
             {cartProducts.map((product, index) => (
               <li
-                key={product._id}
+                key={index}
                 className="py-4 flex items-center border-y border-brown-100 border-opacity-10 justify-between"
               >
                 <div className="flex gap-4 text-center">
@@ -55,7 +57,7 @@ function CartSidebar({
                       {product.name}x{product.quantity}
                     </p>
                     <p className="bg-zinc-700">
-                      大小:{product.selectedSize.sizeName}
+                      {/* 大小:{product.selectedSize.sizeName} */}
                     </p>
                     {product.selectedExtra.length > 0 &&
                       product.selectedExtra.map((extra) => (

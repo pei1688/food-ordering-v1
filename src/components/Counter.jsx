@@ -15,13 +15,14 @@ function Counter({ quantity, setQuantity }) {
         onClick={handleDec}
         className={`${quantity <= 1 ? "cursor-not-allowed opacity-50" : ""}`}
         variant="quantity"
+        size="none"
         disabled={quantity <= 1}
       >
-        <Minus size={20} />
+        <Minus />
       </Button>
       {quantity}
-      <Button onClick={handleIec} variant="quantity">
-        <Plus size={20} />
+      <Button onClick={handleIec} variant="quantity" size="none">
+        <Plus />
       </Button>
     </>
   );

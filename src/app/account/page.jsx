@@ -1,15 +1,13 @@
 import { getUserByEmail } from "@/action/user";
 import UserForm from "@/components/layout/UserForm";
 import LoadingSpinner from "@/components/LoadingSpinner";
-
 import getSession from "@/lib/getSession";
 import { redirect } from "next/navigation";
 import { Suspense } from "react";
 
 async function page() {
   const session = await getSession();
-  const user = session?.user;
-  const userInformation = await getUserByEmail(user?.email);
+  const userInformation = await getUserByEmail( session?.user?.email);
   if (!session.user) redirect("/login");
 
   return (

@@ -48,7 +48,7 @@ function RegisterForm() {
       </h1>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="space-y-6  md:mx-auto min-w-[300px]  sm:min-w-[350px] md:min-w-[500px]"
+        className="space-y-4  md:mx-auto min-w-[300px]  sm:min-w-[350px] md:min-w-[500px]"
       >
         <div className="space-y-2">
           <Label className="items-center text-md flex">名字</Label>
@@ -60,7 +60,12 @@ function RegisterForm() {
             className=" w-full text-zinc-800"
             {...register("name")}
           />
+
+          <div className="text-xs h-4  text-red-500 text-start ">
+            {errors?.name?.message}
+          </div>
         </div>
+
         <div className="space-y-2">
           <Label className="items-center text-md flex">電子信箱</Label>
           <Input
@@ -72,12 +77,12 @@ function RegisterForm() {
             className=" w-full text-zinc-800"
             disabled={creatingUser}
           />
-        </div>
-        {errors.email && (
-          <div className="text-sm text-red-500 text-start">
-            {errors.email.message}
+
+          <div className="text-xs h-4 text-red-500 text-start ">
+            {errors?.email?.message}
           </div>
-        )}
+        </div>
+
         <div className="relative space-y-2">
           <Label className=" items-center text-md  flex">密碼</Label>
           <Input
@@ -95,10 +100,12 @@ function RegisterForm() {
           >
             {showPassword ? "隱藏" : "顯示"}
           </p>
+
+          <div className="text-xs text-red-500 h-4">
+            {errors?.password?.message}
+          </div>
         </div>
-        {errors.password && (
-          <div className="text-sm text-red-500">{errors.password.message}</div>
-        )}
+
         <Button
           variant="login"
           className="w-full justify-center"

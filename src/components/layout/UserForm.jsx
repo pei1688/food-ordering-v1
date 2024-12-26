@@ -19,7 +19,7 @@ function UserForm({ user }) {
   const {
     register,
     handleSubmit,
-    formState: { error },
+    formState: { errors },
   } = useForm({
     resolver: zodResolver(updateSchema),
     defaultValues: {
@@ -69,6 +69,7 @@ function UserForm({ user }) {
               className="w-full"
             />
           </div>
+
           <div className="space-y-4">
             <Label className="text-zinc-100">電子信箱</Label>
             <Input
@@ -97,12 +98,14 @@ function UserForm({ user }) {
               defaultValue={phone || ""}
               className="w-full"
             />
-            {error?.phone && (
-              <p className="text-red-500">{error.phone.message}</p>
-            )}
+            <div className="h-3">
+              {errors?.phone && (
+                <p className="text-red-500 text-sm">{errors.phone.message}</p>
+              )}
+            </div>
           </div>
 
-          <div className=" flex items-center gap-4">
+          <div className="flex items-center gap-4">
             <div className="space-y-4 flex-1">
               <Label className="text-zinc-100 ">城市</Label>
               <Input
@@ -114,9 +117,11 @@ function UserForm({ user }) {
                 defaultValue={city || ""}
                 className="w-full"
               />
-              {error?.city && (
-                <p className="text-red-500">{error.city.message}</p>
-              )}
+              <div className="h-3">
+                {errors?.city && (
+                  <p className="text-red-500 text-xs">{errors.city.message}</p>
+                )}
+              </div>
             </div>
 
             <div className="space-y-4 flex-1">
@@ -130,11 +135,16 @@ function UserForm({ user }) {
                 defaultValue={streetAddress || ""}
                 className="w-full"
               />
-              {error?.streetAddress && (
-                <p className="text-red-500">{error.streetAddress.message}</p>
-              )}
+              <div className="h-3">
+                {errors?.streetAddress && (
+                  <p className="text-red-500 text-xs">
+                    {errors.streetAddress.message}
+                  </p>
+                )}
+              </div>
             </div>
           </div>
+
           <div className="space-y-4">
             <Label className="text-zinc-100">郵遞區號</Label>
             <Input
@@ -146,9 +156,13 @@ function UserForm({ user }) {
               defaultValue={postalCode || ""}
               className="w-full"
             />
-            {error?.postalCode && (
-              <p className="text-red-500">{error.postalCode.message}</p>
-            )}
+            <div className="h-3">
+              {errors?.postalCode && (
+                <p className="text-red-500 text-xs">
+                  {errors.postalCode.message}
+                </p>
+              )}
+            </div>
           </div>
 
           <div className="justify-end flex">

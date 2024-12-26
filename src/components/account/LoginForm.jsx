@@ -42,50 +42,56 @@ function LoginForm() {
       </h1>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="space-y-6  md:mx-auto min-w-[300px]  sm:min-w-[350px] md:min-w-[500px]"
+        className="space-y-2 md:mx-auto min-w-[300px] sm:min-w-[350px] md:min-w-[500px]"
       >
-        <div className="space-y-2">
-          <Label className="  items-center  text-md flex">電子信箱</Label>
+        <div className="space-y-3">
+          <Label className="items-center text-md flex">電子信箱</Label>
           <Input
             type="email"
             placeholder="電子信箱"
             id="email"
             name="email"
-            className=" w-full text-zinc-800"
+            className="w-full text-zinc-800"
             {...register("email")}
           />
-        </div>
-        {errors.email && (
-          <div className="text-sm text-red-500 text-start">
-            {errors.email.message}
+          <div className="text-xs text-red-500 text-start h-4 ">
+            {errors.email?.message}
           </div>
-        )}
-        <div className="relative space-y-2">
-          <Label className=" items-center text-md  flex">密碼</Label>
-          <Input
-            type={showPassword ? "text" : "password"}
-            placeholder="密碼"
-            id="password"
-            name="password"
-            className=" w-full text-zinc-800"
-            {...register("password")}
-          />
-          <p
-            className="absolute inset-y-9 right-0 px-3 text-sm cursor-pointer hover:text-gray-500 text-gray-600"
-            onClick={() => setShowPassword(!showPassword)}
-          >
-            {showPassword ? "隱藏" : "顯示"}
-          </p>
         </div>
-        {errors.password && (
-          <div className="text-sm text-red-500">{errors.password.message}</div>
-        )}
-        <Button variant="login" className="w-full justify-center">
-          登入
-        </Button>
-        <div className="text-center my-0 ">or</div>
+
+        <div className="space-y-3">
+          <Label className="items-center text-md flex">密碼</Label>
+          <div className="relative flex items-center">
+            <Input
+              type={showPassword ? "text" : "password"}
+              placeholder="密碼"
+              id="password"
+              name="password"
+              className="w-full text-zinc-800"
+              {...register("password")}
+            />
+            <p
+              className="absolute right-3 text-sm cursor-pointer hover:text-gray-500 text-gray-600"
+              onClick={() => setShowPassword(!showPassword)}
+            >
+              {showPassword ? "隱藏" : "顯示"}
+            </p>
+          </div>
+          <div className="text-xs text-red-500 h-4">
+            {errors.password?.message}
+          </div>
+        </div>
+
+       
+        <div className="py-3">
+          <Button variant="login" className="w-full justify-center">
+            登入
+          </Button>
+        </div>
+        <div className="text-center my-0">or</div>
       </form>
-      <div className="space-y-6  md:mx-auto min-w-[300px]  sm:min-w-[350px] md:min-w-[500px] mt-4">
+
+      <div className="space-y-6 md:mx-auto min-w-[300px] sm:min-w-[350px] md:min-w-[500px] mt-4">
         <form action={socialLogin}>
           <Button
             variant="login"
@@ -96,7 +102,7 @@ function LoginForm() {
             <Image src={"/google.png"} alt="google" width={20} height={20} />
           </Button>
         </form>
-        <div className="flex  text-center justify-center text-sm">
+        <div className="flex text-center justify-center text-sm">
           還沒有帳戶嗎?
           <Link href={"/register"} className="text-food-600 hover:underline">
             註冊
