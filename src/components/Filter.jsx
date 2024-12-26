@@ -41,13 +41,18 @@ function Filter({ categories, currentFilter, currentSort }) {
   return (
     <div className="flex flex-col sm:flex-row items-center justify-between text-brown-50 space-y-4 sm:space-y-0 ">
       {/* 分類按鈕 */}
-      <div className=" lg:flex hidden max-w-[450px] pb-4">
+      <div className=" lg:flex hidden max-w-[450px] pb-4 gap-3">
         {categories.map((category) => (
           <Button
-           
             key={category}
             value={category}
+            variant="none"
             onClick={(e) => handleFilter(e.target.value)}
+            className={`${
+              currentFilter === category
+                ? " border-b-2 border-zinc-400"
+                : "bg-transparent  border-b-2 border-transparent"
+            } p-2 hover:border-zinc-400 transition-all duration-200`}
           >
             {category}
           </Button>

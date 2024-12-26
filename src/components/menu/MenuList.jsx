@@ -9,7 +9,10 @@ import { CircleAlert, Plus } from "lucide-react";
 import { useContext, useState } from "react";
 import { Button } from "../ui/button";
 import { CartContext } from "@/context/AppContext";
-import MenuItemModal from "../Modal/MenuItemModal";
+import dynamic from "next/dynamic";
+// import MenuItemModal from "../Modal/MenuItemModal";
+const MenuItemModal = dynamic(() => import('../Modal/MenuItemModal'), { ssr: false });
+
 
 function MenuList({ item }) {
   const [open, setOpen] = useState(false);

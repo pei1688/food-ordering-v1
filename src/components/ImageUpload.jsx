@@ -19,6 +19,7 @@ function ImageUpload({ newImage, setNewImage }) {
                   src={newImage || "/default-image.jpg"}
                   alt="food image"
                   fill
+                  priority
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   className="object-cover rounded-md border border-food-600"
                 />

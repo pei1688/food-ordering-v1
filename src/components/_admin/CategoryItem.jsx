@@ -71,9 +71,9 @@ function CategoryItem({ item }) {
       {/* 編輯 Modal */}
       <Modal open={openEditModal} onClose={() => setOpenEditModal(false)}>
         <div className="relative h-[150px] flex flex-col">
-          <Label className="text-xl p-4 flex items-center">
+          <Label className="text-xl p-4 flex items-center gap-2">
             <Pencil size={22} />
-            編輯類別
+            <p >編輯類別</p>
           </Label>
           <div className="absolute top-0 right-0">
             <Button variant="modal" onClick={() => setOpenEditModal(false)}>

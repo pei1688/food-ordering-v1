@@ -5,11 +5,11 @@ import { cva } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center  gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+  "inline-flex items-center  gap-2 whitespace-nowrap  rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
   {
     variants: {
       variant: {
-        default: " text-primary-foreground hover:bg-food-300/70",
+        default: " text-primary-foreground hover:bg-food-300/70 ",
         destructive:
           "bg-destructive text-destructive-foreground hover:bg-destructive/90",
         outline:
@@ -30,7 +30,7 @@ const buttonVariants = cva(
         banner: " px-4 text-md text-brown-400 hover:shadow-lg hover:bg-brown-100 bg-brown-100 ",
         cart: "bg-zinc-200 hover:bg-zinc-300 shadow-md",
         quantity: "bg-zinc-700 hover:bg-zinc-600 px-2 py-1",
-        none: "",
+        none: "rounded-none",
       },
       size: {
         default: "h-10 px-4 py-1",
