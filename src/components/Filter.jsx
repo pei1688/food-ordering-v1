@@ -3,6 +3,7 @@
 import { useSearchParams, useRouter, usePathname } from "next/navigation";
 import { Input } from "./ui/input";
 import { Search } from "lucide-react";
+import { Button } from "./ui/button";
 
 function Filter({ categories, currentFilter, currentSort }) {
   const router = useRouter();
@@ -40,7 +41,20 @@ function Filter({ categories, currentFilter, currentSort }) {
   return (
     <div className="flex flex-col sm:flex-row items-center justify-between text-brown-50 space-y-4 sm:space-y-0 ">
       {/* 分類按鈕 */}
-      <div className="max-w-[450px]">
+      <div className=" lg:flex hidden max-w-[450px] pb-4">
+        {categories.map((category) => (
+          <Button
+           
+            key={category}
+            value={category}
+            onClick={(e) => handleFilter(e.target.value)}
+          >
+            {category}
+          </Button>
+        ))}
+      </div>
+
+      <div className=" lg:hidden flex pb-4 ">
         <select
           className="p-2 rounded-md shadow-sm bg-transparent focus:outline-none cursor-pointer accent-auto w-full"
           value={currentFilter}
@@ -53,7 +67,6 @@ function Filter({ categories, currentFilter, currentSort }) {
           ))}
         </select>
       </div>
-
       {/* 搜索欄和排序 */}
       <div className="flex flex-col sm:flex-row items-center gap-8 sm:gap-4 sm:my-0 my-4 w-full sm:w-auto pb-4">
         {/* 搜索欄 */}
