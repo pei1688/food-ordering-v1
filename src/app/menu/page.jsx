@@ -3,9 +3,12 @@ import { lazy, Suspense } from "react";
 import Slider from "@/components/Slider";
 import LoadingSpinner from "@/components/LoadingSpinner";
 import { redirect } from "next/navigation";
+import dynamic from "next/dynamic";
 
-const Filter = lazy(() => import("@/components/Filter"));
-const MenuList = lazy(() => import("@/components/menu/MenuList")); //懶加載
+const Filter = dynamic(() => import("@/components/Filter"));
+const MenuList = lazy(() => import("@/components/menu/MenuList"), {
+  loading: () => <p>載入菜單...</p>,
+}); //懶加載
 
 export const metadata = {
   title: "商品一覽",

@@ -3,11 +3,16 @@ import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import Dropdown from "./Dropdown";
 import { logoutUser } from "@/action/user";
 import { Button } from "@/components/ui/button";
-import { FolderKanban, LogOut, User, UserPen, UserRound } from "lucide-react";
+import {
+  FolderKanban,
+  LogOut,
+  Tag,
+  User,
+  UserPen,
+  UserRound,
+} from "lucide-react";
 
 function UserMenu({ user }) {
-  // console.log(user);
-
   return (
     <Dropdown
       trigger={
@@ -37,6 +42,12 @@ function UserMenu({ user }) {
             <div className="w-full hover:bg-zinc-200 p-4 rounded-t-md duration-200 flex items-center gap-2">
               <UserRound size={20} />
               個人資料
+            </div>
+          </Link>
+          <Link href={"/account/userOrder"}>
+            <div className="w-full hover:bg-zinc-200 p-4 rounded-t-md duration-200 flex items-center gap-2">
+              <Tag size={20} />
+              訂單
             </div>
           </Link>
           {user?.role === "admin" && (

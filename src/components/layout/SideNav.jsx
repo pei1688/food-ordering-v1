@@ -29,7 +29,7 @@ function SideNav({ user }) {
         <div className="flex items-center justify-center mb-1">
           <UserRound size={20} />
         </div>
-        <p className="md:text-lg text-xs">個人資料</p>
+        <p className="md:text-lg md:flex hidden">個人資料</p>
       </Link>
       <Link
         href={"/account/userOrder"}
@@ -40,7 +40,7 @@ function SideNav({ user }) {
         <div className="flex items-center justify-center mb-1">
           <Tag size={18} />
         </div>
-        <p className="md:text-lg text-xs ">訂單</p>
+        <p className="md:text-lg md:flex hidden ">訂單</p>
       </Link>
 
       {user?.role === "admin" && (
@@ -54,7 +54,7 @@ function SideNav({ user }) {
             <div className="flex items-center justify-center mb-1">
               <ChartColumnStacked size={18} />
             </div>
-            <p className="md:text-lg text-xs">建立類別</p>
+            <p className="md:text-lg md:flex hidden">建立類別</p>
           </Link>
 
           <Link
@@ -66,7 +66,7 @@ function SideNav({ user }) {
             <div className="flex items-center justify-center mb-1">
               <FolderKanban size={18} />
             </div>
-            <p className="md:text-lg text-xs">食物總覽</p>
+            <p className="md:text-lg md:flex hidden">食物總覽</p>
           </Link>
           <Link
             className={`md:flex-row  flex flex-col p-2 rounded-md items-center gap-2 hover:bg-food-200 transition-colors ${
@@ -78,7 +78,7 @@ function SideNav({ user }) {
               <UserPen size={18} />
             </div>
 
-            <p className="md:text-lg text-xs">管理用戶</p>
+            <p className="md:text-lg md:flex hidden">管理用戶</p>
           </Link>
           <Link
             className={`md:flex-row  flex flex-col p-2 rounded-md items-center gap-2 hover:bg-food-200 transition-colors ${
@@ -89,7 +89,7 @@ function SideNav({ user }) {
             <div className="flex items-center justify-center mb-1">
               <BookA size={18} />
             </div>
-            <p className="md:text-lg text-xs">管理訂單</p>
+            <p className="md:text-lg md:flex hidden">管理訂單</p>
           </Link>
         </>
       )}
