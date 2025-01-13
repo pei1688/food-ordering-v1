@@ -29,7 +29,7 @@ export default async function RootLayout({ children }) {
             <Header />
             {children}
             <Footer />
-            <Toaster position="bottem-right" theme="dark" />
+            <Toaster position="top-center" theme="dark" />
           </AppProvider>
         </main>
       </body>

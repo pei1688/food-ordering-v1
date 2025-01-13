@@ -20,7 +20,6 @@ export async function registerProfile(formData) {
     password: hashPassword,
     image: "https://github.com/shadcn.png",
   });
-  console.log(res);
   redirect("/login");
 }
 
@@ -53,7 +52,6 @@ export async function logoutUser() {
 //更新個人資料
 export async function updateProfile(formData, newImage) {
   const session = await getSession();
-  console.log(session);
   const email = session?.user?.email;
   const filteredFields = Object.fromEntries(
     Object.entries(formData).filter(([_, value]) => value !== "")
