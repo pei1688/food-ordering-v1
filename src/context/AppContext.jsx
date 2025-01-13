@@ -23,46 +23,6 @@ export function AppProvider({ children }) {
     }
   }, []);
 
-  //加入購物車
-  // function addToCart(product) {
-  //   setCartProducts((prevProducts) => {
-  //     const newProducts = [...prevProducts, product];
-  //     saveCartToLs(newProducts);
-  //     // console.log(newProducts);
-  //     return newProducts;
-  //   });
-  // }
-
-  function addToCartX(product) {
-    setCartProducts((prevProducts) => {
-      // 檢查是否已經有相同的產品
-      const existingProductIndex = prevProducts.findIndex(
-        (p) =>
-          p._id === product._id && // ID相同
-          p.selectedSize?.sizeName === product.selectedSize?.sizeName && // 尺寸相同
-          p.selectedExtra?.extraName === product.selectedExtra?.extraName // 加料相同
-      );
-
-      let newProducts;
-      if (existingProductIndex !== -1) {
-        // 如果找到相同產品，更新數量
-        newProducts = prevProducts.map((p, index) =>
-          index === existingProductIndex
-            ? {
-                ...p,
-                quantity: p.quantity + product.quantity,
-                totalPrice: p.totalPrice + product.totalPrice,
-              }
-            : p
-        );
-      } else {
-        // 如果沒有找到相同產品，新增產品
-        newProducts = [...prevProducts, product];
-      }
-      saveCartToLs(newProducts);
-      return newProducts;
-    });
-  }
   function addToCart(product) {
     setCartProducts((prevProducts) => {
       // 檢查是否已經有相同的產品
