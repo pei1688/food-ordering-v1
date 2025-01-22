@@ -18,16 +18,18 @@ function UserMenu({ user }) {
       trigger={
         <div className="flex items-center gap-2 cursor-pointer">
           {user ? (
-            <Avatar className="h-9 w-9">
-              <AvatarImage
-                src={user?.image || ""}
-                alt="avatar"
-                className="bg-zinc-900"
-              />
-              <AvatarFallback>
-                {user?.name?.slice(0, 2) || "未登入"}
-              </AvatarFallback>
-            </Avatar>
+            <Link href="/account">
+              <Avatar className="h-9 w-9">
+                <AvatarImage
+                  src={user?.image || ""}
+                  alt="avatar"
+                  className="bg-zinc-900"
+                />
+                <AvatarFallback>
+                  {user?.name?.slice(0, 2) || "未登入"}
+                </AvatarFallback>
+              </Avatar>
+            </Link>
           ) : (
             <User size={32} />
           )}
