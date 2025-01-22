@@ -1,24 +1,22 @@
 "use client";
-import { useContext, useState } from "react";
-import { CartContext } from "@/context/AppContext";
+import { useState } from "react";
 import { EggFried, Logs, ShoppingCart } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import DesktopMenu from "./DesktopMenu";
 import MobileMenu from "./MobileMenu";
 import dynamic from "next/dynamic";
+import useCartStore from "@/stores/useStore";
 
 const CartSidebar = dynamic(() => import("./CartSidebar"), {
   ssr: false,
 });
 
 function HeadNav({ user }) {
-  const { cartProducts, removeCartProduct, updateCartProduct } =
-    useContext(CartContext);
+  const { cartProducts, updateCartProduct, removeCartProduct } = useCartStore();
   const [openMenu, setOpenMenu] = useState(false);
   const [openCartSidebar, setOpenCartSidebar] = useState(false);
   const pathName = usePathname();
-
   const isActive = (path) => pathName === path;
   const totalCartPrice = cartProducts.reduce(
     (total, product) => total + product.totalPrice,

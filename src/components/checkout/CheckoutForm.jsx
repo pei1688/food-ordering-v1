@@ -1,18 +1,18 @@
 "use client";
 import CartProduct from "@/components/checkout/CartProduct";
 import AdressInfo from "./AdressInfo";
-import { useContext, useState, useTransition } from "react";
-import { CartContext } from "@/context/AppContext";
+import { useState, useTransition } from "react";
 import { ArrowRight } from "lucide-react";
 import { Button } from "../ui/button";
 import { toast } from "sonner";
 import Link from "next/link";
+import useCartStore from "@/stores/useStore";
 
 function CheckoutForm({ initialAddressInfo, user }) {
   const [addressInfo, setAddressInfo] = useState(initialAddressInfo);
   const [isPending, startTransition] = useTransition();
-  const { cartProducts, removeCartProduct, updateCartProduct } =
-    useContext(CartContext);
+  const { cartProducts, removeCartProduct, updateCartProduct } = useCartStore();
+
   const totalCartPrice = cartProducts.reduce(
     (total, product) => total + product.totalPrice,
     0
@@ -111,7 +111,10 @@ function CheckoutForm({ initialAddressInfo, user }) {
       ) : (
         <div className="bg-food-100 bg-opacity-50 w-full rounded-lg flex justify-center items-center text-xl transition-all">
           請先
-          <Link href={"/login"} className="hover:text-food-600 border-b-1 border-b-brown-150 ml-1 border-transparent">
+          <Link
+            href={"/login"}
+            className="hover:text-food-600 border-b-1 border-b-brown-150 ml-1 border-transparent"
+          >
             登入
           </Link>
         </div>

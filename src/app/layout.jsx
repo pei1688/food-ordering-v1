@@ -1,7 +1,6 @@
 import "./globals.css";
 import Header from "../components/layout/headNav/Header";
 import { Toaster } from "sonner";
-import { AppProvider } from "@/context/AppContext";
 import Footer from "@/components/layout/Footer";
 
 export const metadata = {
@@ -25,12 +24,10 @@ export default async function RootLayout({ children }) {
       </head>
       <body className="bg-gradient-to-tr from-food-300 to-food-200 min-h-screen w-full pt-8 font-sans">
         <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 tracking-[2px] ">
-          <AppProvider>
-            <Header />
-            {children}
-            <Footer />
-            <Toaster position="top-center" theme="dark" />
-          </AppProvider>
+          <Header />
+          {children}
+          <Footer />
+          <Toaster position="top-center" theme="dark" />
         </main>
       </body>
     </html>

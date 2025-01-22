@@ -6,17 +6,18 @@ import {
   HoverCardTrigger,
 } from "@/components/ui/hover-card";
 import { CircleAlert, Plus } from "lucide-react";
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { Button } from "../ui/button";
-import { CartContext } from "@/context/AppContext";
 import dynamic from "next/dynamic";
+import useCartStore from "@/stores/useStore";
 // import MenuItemModal from "../Modal/MenuItemModal";
-const MenuItemModal = dynamic(() => import('../Modal/MenuItemModal'), { ssr: false });
-
+const MenuItemModal = dynamic(() => import("../Modal/MenuItemModal"), {
+  ssr: false,
+});
 
 function MenuList({ item }) {
   const [open, setOpen] = useState(false);
-  const { addToCart } = useContext(CartContext);
+  const { addToCart } = useCartStore();
   return (
     <section className="bg-food-300 text-zinc-50 rounded-md mt-4  shadow-lg border border-food-400 hover:border-food-600 duration-200 cursor-pointer">
       <div className="relative h-[300px]">
