@@ -14,7 +14,7 @@ import { loginSchema } from "@/lib/zodSchema";
 import { loginProfile, socialLogin } from "@/action/user";
 import { toast } from "sonner";
 
-function LoginForm() {
+function  LoginForm() {
   const [showPassword, setShowPassword] = useState(false);
 
   const {
@@ -51,6 +51,7 @@ function LoginForm() {
             placeholder="電子信箱"
             id="email"
             name="email"
+            defaultValue="test@example.com"
             className="w-full text-zinc-800"
             {...register("email")}
           />
@@ -67,6 +68,7 @@ function LoginForm() {
               placeholder="密碼"
               id="password"
               name="password"
+              defaultValue="123456789"
               className="w-full text-zinc-800"
               {...register("password")}
             />
