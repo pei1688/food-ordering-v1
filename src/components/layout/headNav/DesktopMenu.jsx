@@ -1,6 +1,7 @@
-const { default: CartMenu } = require("@/components/Dropdown/CartMenu");
-const { default: UserMenu } = require("@/components/Dropdown/UserMenu");
-const { default: Link } = require("next/link");
+import CartMenu from "@/components/Dropdown/CartMenu";
+import UserMenu from "@/components/Dropdown/UserMenu";
+import Link from "next/link";
+
 
 const DesktopMenu = ({
   user,

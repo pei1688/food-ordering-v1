@@ -2,7 +2,6 @@
 import { Label } from "@/components/ui/label";
 import { BookUser } from "lucide-react";
 function OrderAddress({ order }) {
-  console.log(order);
 
   return (
     <div className="space-y-4 bg-food-200 px-4  w-full  rounded-md h-[500px] flex flex-col ">

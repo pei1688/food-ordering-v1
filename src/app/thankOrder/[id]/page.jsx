@@ -1,12 +1,11 @@
 "use client";
-
-import { CartContext } from "@/context/AppContext";
-import { useContext, useEffect } from "react";
+import { useEffect } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { useState } from "react";
 import SectionHeader from "@/components/layout/SectionHeader";
+import useCartStore from "@/stores/useStore";
 function page() {
-  const { clearCart } = useContext(CartContext);
+  const { clearCart } = useCartStore();
   const [order, setOrder] = useState();
   const { id } = useParams();
   const router = useRouter();
